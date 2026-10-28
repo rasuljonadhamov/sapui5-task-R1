@@ -8,12 +8,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
       });
       this.getView()?.setModel(viewModel, "view");
     },
-    onFilterInvoices(event) {
-      // build filter array
+    onFilterInvoices() {
+      this._applyFilters();
+    },
+    onFilterStatus() {
+      this._applyFilters();
+    },
+    _applyFilters() {
+      // build filter array from the search field and the status combo box
       const filter = [];
-      const query = event.getParameter("query");
+      const query = this.byId("searchField")?.getValue();
       if (query) {
         filter.push(new Filter("ProductName", FilterOperator.Contains, query));
+      }
+      const status = this.byId("statusFilter")?.getSelectedKey();
+      if (status && status !== "all") {
+        filter.push(new Filter("Status", FilterOperator.EQ, status));
       }
 
       // filter binding
