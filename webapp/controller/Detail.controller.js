@@ -1,8 +1,12 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/m/MessageToast", "sap/ui/core/UIComponent"], function (Controller, History, MessageToast, UIComponent) {
+sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/m/MessageToast", "sap/ui/model/json/JSONModel", "sap/ui/core/UIComponent"], function (Controller, History, MessageToast, JSONModel, UIComponent) {
   "use strict";
 
   const Detail = Controller.extend("ui5.tutorial.walkthrough.controller.Detail", {
     onInit() {
+      const viewModel = new JSONModel({
+        currency: "EUR"
+      });
+      this.getView()?.setModel(viewModel, "view");
       const router = UIComponent.getRouterFor(this);
       router.getRoute("detail").attachPatternMatched(this.onObjectMatched, this);
     },
