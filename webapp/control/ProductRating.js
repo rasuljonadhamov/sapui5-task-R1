@@ -50,7 +50,7 @@ sap.ui.define(["sap/ui/core/Control", "sap/m/Label", "sap/m/Button", "sap/m/Rati
         }
       }
     },
-    constructor(id, settings) {
+    constructor: function (id, settings) {
       Control.prototype.constructor.call(this, id, settings);
     },
     init() {
