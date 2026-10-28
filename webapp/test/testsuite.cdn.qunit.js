@@ -20,6 +20,9 @@ sap.ui.define([], function () {
     tests: {
       "unit/unitTests": {
         title: "SAPUI5 Walkthrough - Unit Tests"
+      },
+      "integration/opaTests": {
+        title: "SAPUI5 Walkthrough - Integration Tests"
       }
     }
   };
