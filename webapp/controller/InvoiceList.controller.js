@@ -21,9 +21,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
       const binding = list?.getBinding("items");
       binding?.filter(filter);
     },
-    onPress() {
+    onPress(event) {
+      const item = event.getSource();
       const router = UIComponent.getRouterFor(this);
-      router.navTo("detail");
+      router.navTo("detail", {
+        invoicePath: window.encodeURIComponent(item.getBindingContext("invoice").getPath().substring(1))
+      });
     }
   });
   return App;
