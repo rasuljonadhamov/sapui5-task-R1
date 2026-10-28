@@ -26,6 +26,9 @@ sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/model/json/JSONModel", "sap/ui
 
       // create the views based on the url/hash
       this.getRouter().initialize();
+    },
+    getContentDensityClass() {
+      return Device.support.touch ? "sapUiSizeCozy" : "sapUiSizeCompact";
     }
   });
   return Component;
