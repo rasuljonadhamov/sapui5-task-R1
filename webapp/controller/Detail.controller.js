@@ -1,4 +1,4 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/UIComponent"], function (Controller, UIComponent) {
+sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/ui/core/UIComponent"], function (Controller, History, UIComponent) {
   "use strict";
 
   const Detail = Controller.extend("ui5.tutorial.walkthrough.controller.Detail", {
@@ -11,6 +11,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/UIComponent"], functio
         path: "/" + window.decodeURIComponent(event.getParameter("arguments").invoicePath),
         model: "invoice"
       });
+    },
+    onNavBack() {
+      const history = History.getInstance();
+      const previousHash = history.getPreviousHash();
+      if (previousHash !== undefined) {
+        window.history.go(-1);
+      } else {
+        const router = UIComponent.getRouterFor(this);
+        router.navTo("overview", {}, true);
+      }
     }
   });
   return Detail;
