@@ -18,6 +18,9 @@ sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/model/json/JSONModel"], functi
       };
       const model = new JSONModel(data);
       this.setModel(model);
+
+      // create the views based on the url/hash
+      this.getRouter().initialize();
     }
   });
   return Component;

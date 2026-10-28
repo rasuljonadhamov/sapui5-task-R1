@@ -1,4 +1,4 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap/ui/model/Filter", "sap/ui/model/FilterOperator"], function (Controller, JSONModel, Filter, FilterOperator) {
+sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap/ui/model/Filter", "sap/ui/model/FilterOperator", "sap/ui/core/UIComponent"], function (Controller, JSONModel, Filter, FilterOperator, UIComponent) {
   "use strict";
 
   const App = Controller.extend("ui5.tutorial.walkthrough.controller.App", {
@@ -20,6 +20,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel", "sap
       const list = this.byId("invoiceList");
       const binding = list?.getBinding("items");
       binding?.filter(filter);
+    },
+    onPress() {
+      const router = UIComponent.getRouterFor(this);
+      router.navTo("detail");
     }
   });
   return App;
